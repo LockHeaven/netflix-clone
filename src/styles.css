@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-zinc-900 h-full overflow-x-hidden;
+}
+
+#__next {
+    @apply h-full;
+}
+
+html {
+    @apply h-full;
+}
