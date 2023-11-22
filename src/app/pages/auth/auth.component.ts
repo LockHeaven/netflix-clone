@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { Route, Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { InputComponent } from 'src/app/components/input/input.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [
-    CommonModule,
-    ComponentsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css',
 })

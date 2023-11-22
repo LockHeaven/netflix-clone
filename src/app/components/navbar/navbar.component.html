@@ -1,1 +1,58 @@
-<p>navbar works!</p>
+<nav class="w-full z-40 fixed">
+  <div
+    class="px-4 md:px-16 py-6 flex flex-row items-center transition duration-500"
+    [ngClass]="showBackgroung ? 'bg-zinc-900 bg-opacity-90' : ''"
+  >
+    <img class="h-4 lg:h-7" src="/assets/images/logo.png" alt="Logo" />
+    <div class="flex-row ml-8 gap-7 hidden lg:flex">
+      <navbar-item [label]="'Home'" />
+      <navbar-item [label]="'Series'" />
+      <navbar-item [label]="'Films'" />
+      <navbar-item [label]="'New & Popular'" />
+      <navbar-item [label]="'My List'" />
+      <navbar-item [label]="'Browse by languages'" />
+    </div>
+    <div
+      class="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative"
+      (click)="showMobileMenu = !showMobileMenu"
+    >
+      <p class="text-white text-sm">Browse</p>
+      <span
+        class="material-symbols-outlined text-white mt-1 transition"
+        [ngClass]="showMobileMenu ? 'rotate-180' : 'rotate-0'"
+      >
+        expand_more
+      </span>
+      @if (showMobileMenu) {
+      <mobile-menu />
+      }
+    </div>
+    <div class="flex flex-row ml-auto gap-7 items-center">
+      <div class="text-gray-200 hover:text-gray-300 cursor-pointer transition">
+        <span class="material-symbols-outlined mt-3"> search </span>
+      </div>
+      <div class="text-gray-200 hover:text-gray-300 cursor-pointer transition">
+        <span class="material-symbols-outlined mt-3"> notifications </span>
+      </div>
+      <div
+        class="flex flex-row items-center gap-2 cursor-pointer"
+        (click)="showAccountMenu = !showAccountMenu"
+      >
+        <div class="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+          <img src="/assets/images/default-blue.png" alt="Profile" />
+        </div>
+        <span
+          class="material-symbols-outlined text-white mt-1 mr-2 transition"
+          [ngClass]="showAccountMenu ? 'rotate-180' : 'rotate-0'"
+        >
+          expand_more
+        </span>
+      </div>
+      <div class="relative">
+        @if (showAccountMenu) {
+        <account-menu />
+        }
+      </div>
+    </div>
+  </div>
+</nav>

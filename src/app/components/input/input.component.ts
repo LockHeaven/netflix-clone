@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'input-control',
   templateUrl: './input.component.html',
+  standalone: true,
+  imports: [CommonModule],
   styles: '',
   providers: [
     {
