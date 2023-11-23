@@ -1,4 +1,4 @@
-export const movies = [
+export const movies: Movie[] = [
   {
     title: 'Hestia',
     description:
@@ -40,7 +40,7 @@ export const movies = [
     description:
       'Descubre la emocionante historia de Ares, dios griego de la guerra e hijo de Zeus. Grandes batallas, amor, aventuras junto a Poseidón o Zeus, y justicia, todo ello en un nuevo y épico Destripando la Historia.',
     videoUrl: '/assets/videos/Ares.mp4',
-    thumbnailUrl: '/assets/images/HesArestia.jpg',
+    thumbnailUrl: '/assets/images/Ares.jpg',
     genre: 'Comedy',
     duration: '3:32 minutes',
   },
@@ -81,3 +81,12 @@ export const movies = [
     duration: '3:16 minutes',
   },
 ];
+
+export interface Movie {
+  title: string;
+  description: string;
+  videoUrl: string;
+  thumbnailUrl: string;
+  genre: string;
+  duration: string;
+}
