@@ -1,0 +1,25 @@
+<div class="h-screen w-screen bg-black" (mousemove)="hideTitle()">
+  <nav
+    class="fixed w-full p-4 z-10 flex flex-row items-center gap-8 transition duration-500 bg-black bg-opacity-70"
+    [ngClass]="showTitle ? 'bg-opacity-70' : 'bg-opacity-0'"
+  >
+    <button (click)="back()" [ngClass]="showTitle ? 'visible' : 'invisible'">
+      <back-icon />
+    </button>
+    <p
+      class="text-white text-xl md:text-3xl font-bold"
+      [ngClass]="showTitle ? 'visible' : 'invisible'"
+    >
+      <span class="font-light"> Watching: </span>{{ movie?.title }}
+    </p>
+  </nav>
+  <video
+    autoplay
+    controls
+    (pause)="pauseVideo()"
+    (play)="playVideo()"
+    [muted]="true"
+    class="h-full w-full"
+    [src]="movie?.videoUrl"
+  ></video>
+</div>
