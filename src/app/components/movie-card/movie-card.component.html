@@ -11,11 +11,13 @@
   <div
     class="opacity-0 absolute top-0 transition duration-200 z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-125 group-hover:-translate-y-[6vw] group-hover:opacity-100"
   >
-    <img
+    <video
       class="cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]"
-      [src]="movie.thumbnailUrl"
-      [alt]="movie.title"
-    />
+      [muted]="true"
+      [poster]="movie.thumbnailUrl"
+      [src]="movie.videoUrl"
+      #videoCard
+    ></video>
     <div
       class="z-10 bg-zinc-900 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md"
     >

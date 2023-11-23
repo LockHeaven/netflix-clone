@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Movie } from 'src/assets/movies';
 import { Subscription, timer } from 'rxjs';
@@ -14,9 +14,11 @@ import { Router } from '@angular/router';
   styles: ``,
 })
 export class MovieCardComponent {
+  @ViewChild('videoCard') videoCard!: ElementRef<HTMLVideoElement>;
   @Input() movie!: Movie;
 
-  timeMouseMovie?: Subscription;
+  timeMouseMovieEnter?: Subscription;
+  timeMouseMovieOut?: Subscription;
 
   routerService = inject(Router);
 
@@ -25,10 +27,25 @@ export class MovieCardComponent {
   }
 
   enterMovie(): void {
-    this.timeMouseMovie = timer(3000).subscribe(() => console.log('HOLA'));
+    this.timeMouseMovieOut?.unsubscribe();
+    this.videoCard.nativeElement.poster = this.movie.thumbnailUrl;
+    this.videoCard.nativeElement.src = this.movie.videoUrl;
+
+    this.timeMouseMovieEnter?.unsubscribe();
+    this.timeMouseMovieEnter = timer(3000).subscribe(() => {
+      this.videoCard.nativeElement.play();
+    });
   }
 
   outMovie(): void {
-    this.timeMouseMovie?.unsubscribe();
+    this.timeMouseMovieOut?.unsubscribe();
+    this.timeMouseMovieOut = timer(2000).subscribe(() => {
+      this.videoCard.nativeElement.currentTime = 0;
+      this.videoCard.nativeElement.pause();
+      this.videoCard.nativeElement.poster = '';
+      this.videoCard.nativeElement.src = '';
+    });
+
+    this.timeMouseMovieEnter?.unsubscribe();
   }
 }
