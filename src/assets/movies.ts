@@ -89,6 +89,16 @@ export const movies: Movie[] = [
     genre: 'Action',
     duration: '3:16 minutes',
   },
+  {
+    id: 10,
+    title: 'Zeus',
+    description:
+      '¡Descubre la historia del dios griego Zeus, el padre de Hércules y puede que incluso el tuyo! Pasión desenfrenada, sensualidad extrema y amor, todo ello en una nueva canción de Destripando la Historia que te trasladará a la música pop de los 80.',
+    videoUrl: '/assets/videos/Zeus.mp4',
+    thumbnailUrl: '/assets/images/Zeus.jpg',
+    genre: 'Action',
+    duration: '2:52 minutes',
+  },
 ];
 
 export interface Movie {
